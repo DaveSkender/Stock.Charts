@@ -75,6 +75,7 @@ export interface IndicatorSelection {
   ucid: string,
   uiid: string,
   label: string,
+  order: number,
   chartType: string,
   params: IndicatorParam[],
   results: IndicatorResult[],

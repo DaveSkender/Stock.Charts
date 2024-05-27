@@ -86,11 +86,12 @@ export class PickConfigComponent {
 
   onSubmit(): void {
 
+    // enrich selection with data
     this.api.getSelection(this.selection, this.listing)
       .subscribe({
         next: (selectionWithData: IndicatorSelection) => {
 
-          this.cs.displaySelection(selectionWithData, this.listing, true);
+          this.cs.selections.push(selectionWithData);
           this.errorMessage = undefined;
           this.closeButtonLabel = "RESOLVED ...";
           this.dialogRef.close();
@@ -112,7 +113,11 @@ export class PickConfigComponent {
   }
 
   getColor(e: ColorEvent, picker: MtxColorpicker): string {
-    const color = e.color.rgb.a === 1 ? e.color.hex : new TinyColor(e.color.rgb).toHex8String();
+
+    const color = e.color.rgb.a === 1
+      ? e.color.hex
+      : new TinyColor(e.color.rgb).toHex8String();
+
     picker.close();
     return color.toUpperCase();
   }

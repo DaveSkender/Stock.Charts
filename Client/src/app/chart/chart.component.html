@@ -8,9 +8,16 @@
 </div>
 
 <!-- CHART (MAIN OVERLAY) -->
-<div id="chart-overlay" class="chart-overlay-container" [hidden]="cs.loading">
+<div id="chart-overlay" [hidden]="cs.loading"
+  class="chart-overlay-container">
   <canvas id="chartOverlay"></canvas>
 </div>
 
 <!-- CHART (OSCILLATORS) -->
-<div id="oscillators-zone" [hidden]="cs.loading"></div>
+<div id="oscillators-zone" [hidden]="cs.loading">
+
+  <div id="{{ o.ucid }}-container"
+    class="chart-oscillator-container"
+    *ngFor="let o of cs.sortedSelections('oscillator')" afterAdd
+    (added)="composeOscillator(o)"></div>
+</div>

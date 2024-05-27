@@ -12,10 +12,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ChartComponent } from './chart.component';
 
 import { ChartService } from '../services/chart.service';
+import { ChartDirective } from './chart.directive';
 
 @NgModule({
   declarations: [
-    ChartComponent
+    ChartComponent,
+    ChartDirective
   ],
   imports: [
     CommonModule,

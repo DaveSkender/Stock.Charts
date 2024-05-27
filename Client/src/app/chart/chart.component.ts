@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { ChartService } from '../services/chart.service';
+import { IndicatorSelection } from './chart.models';
 
 @Component({
   selector: 'app-chart',
@@ -16,5 +17,11 @@ export class ChartComponent {
     public readonly cs: ChartService
   ) {
     this.cs.loadCharts();
+  }
+
+  composeOscillator(enrichedSelection: IndicatorSelection) {
+
+    console.log("added", enrichedSelection.ucid);
+    this.cs.composeSelection(enrichedSelection, !this.cs.loading);
   }
 }
